@@ -17,7 +17,7 @@ export class AuthenticationService {
   //Retrieves user token and checks authentication
   authenticate(username, password) {
 
-    return this.httpClient.post<any>('http://localhost:9092/authenticate',
+    return this.httpClient.post<any>('http://localhost:8080/v1/authenticate',
     {username, password}).subscribe(
       userData => {
         sessionStorage.setItem('username', username);
@@ -41,12 +41,12 @@ export class AuthenticationService {
 
   // Retrives role of user(customer/admin)
   getRole(username:String) {
-    return this.httpClient.get('http://localhost:9092/getRole?username='+ username);
+    return this.httpClient.get('http://localhost:8080/v1/getRole?username='+ username);
   }
 
   // Adds a new User
   signUp(user: User) {
-    return this.httpClient.post('http://localhost:9092/signup', user);
+    return this.httpClient.post('http://localhost:8080/v1/signup', user);
   }
 
 
